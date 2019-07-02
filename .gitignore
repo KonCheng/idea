@@ -1,0 +1,31 @@
+*.class
+target/
+
+# Eclipse project files
+.classpath
+.project
+.settings
+
+# IDEA metadata and output dirs
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# gitbook
+_book
+tmp
+
+# gitignore
+# .gitignore
+
+salesup/classes/
+/service_auth/auth_web/hsf.lock
+/service_auth/auth_web/src/main/java/com/holly/auth/web/KafkaUpdateUser.java
+/service_auth/auth_web/src/main/java/com/holly/auth/web/test.java
+/service_clue/clue_web/logs/iorder/2019-03-30/debug.0.log
+/service_clue/clue_web/logs/iorder/2019-03-30/error.0.log
+/service_clue/clue_web/logs/iorder/2019-03-30/info.0.log
+/service_clue/clue_web/logs/iorder/2019-03-30/trace.0.log
+/service_clue/clue_web/logs/iorder/2019-03-30/warn.0.log
+/service_klog/klog_web/hsf.lock
