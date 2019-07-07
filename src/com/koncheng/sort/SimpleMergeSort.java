@@ -14,7 +14,18 @@ public class SimpleMergeSort extends AbstractSort {
 
     }
 
-    void sort(int[] nums) {
-
+    private void sort(int[] nums, int start, int end) {
+        if (end - start > 1) {
+            sort(nums, start, (start + end + 1) / 2);
+            sort(nums, ((start + end + 1) / 2) + 1, end);
+        } else if (end - start == 1) {
+            if (nums[start] > nums[end]) {
+                int tmp = nums[start];
+                nums[start] = nums[end];
+                nums[end] = tmp;
+            }
+        }
+//        for (int i = start; i <= end; i++) {
+//        }
     }
 }

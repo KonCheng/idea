@@ -14,34 +14,35 @@ public class QuickSort extends AbstractSort {
         if (nums.length <= 1) {
             return;
         }
-        int pivotIndex = nums.length - 1;
-        int leftIndex = 0;
-        int rightIndex = pivotIndex - 1;
-
+        sort(nums, 0, nums.length - 1);
     }
 
-    /*void qsort(int arr[], int start, int end) {
-        int pivot = arr[start];
-        int i = start;
-        int j = end;
-        while (i < j) {
-            while ((i < j) && (arr[j] > pivot)) {
-                j--;
+    private void sort(int[] nums, int left, int right) {
+        int pivot = nums[left];
+        int leftIndex = left;
+        int rightIndex = right;
+
+        while (leftIndex < rightIndex) {
+            while (leftIndex < rightIndex && nums[rightIndex] > pivot) {
+                rightIndex--;
             }
-            while ((i < j) && (arr[i] < pivot)) {
-                i++;
+            while (leftIndex < rightIndex && nums[leftIndex] < pivot) {
+                leftIndex++;
             }
-            if ((arr[i] == arr[j]) && (i < j)) {
-                i++;
+            if (nums[leftIndex] == nums[rightIndex] && leftIndex < rightIndex) {
+                leftIndex++;
             } else {
-                int temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
+                int tmp = nums[leftIndex];
+                nums[leftIndex] = nums[rightIndex];
+                nums[rightIndex] = tmp;
             }
         }
-        if (i - 1 > start) arr = qsort(arr, start, i - 1);
-        if (j + 1 < end) arr = qsort(arr, j + 1, end);
-        return (arr);
-    }*/
+        if (leftIndex - 1 > left) {
+            sort(nums, left, leftIndex - 1);
+        }
+        if (rightIndex + 1 < right) {
+            sort(nums, rightIndex + 1, right);
+        }
+    }
 
 }

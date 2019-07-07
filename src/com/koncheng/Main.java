@@ -13,9 +13,9 @@ public class Main {
 
     private static void testSort() {
         Random random = new Random();
-        int[] nums = new int[20];
+        int[] nums = new int[100];
         for (int i = 0; i < nums.length; i++) {
-            nums[i] = random.nextInt(100);
+            nums[i] = random.nextInt(1000);
         }
         Sort sort = new QuickSort(nums);
         sort.sort();
