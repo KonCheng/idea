@@ -2,6 +2,7 @@ package com.koncheng.sort;
 
 /**
  * 冒泡排序
+ * 时间复杂度O(n^2)
  *
  * @author ChenYong
  * @version 2019-7-2

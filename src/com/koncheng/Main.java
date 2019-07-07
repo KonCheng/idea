@@ -1,7 +1,8 @@
 package com.koncheng;
 
-import com.koncheng.sort.BubbleSort;
-import com.koncheng.sort.Sort;
+import com.koncheng.sort.*;
+
+import java.util.Random;
 
 public class Main {
 
@@ -11,8 +12,12 @@ public class Main {
     }
 
     private static void testSort() {
-        int[] nums = {7, 3, 5, 9, 6, 4, 2, 8, 1};
-        Sort sort = new BubbleSort(nums);
+        Random random = new Random();
+        int[] nums = new int[20];
+        for (int i = 0; i < nums.length; i++) {
+            nums[i] = random.nextInt(100);
+        }
+        Sort sort = new QuickSort(nums);
         sort.sort();
         sort.print();
     }
