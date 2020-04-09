@@ -1,14 +1,17 @@
 package com.koncheng;
 
+import com.koncheng.leetcode.Solution;
 import com.koncheng.sort.*;
 
 import java.util.Random;
 
 public class Main {
 
+    private static Solution solution = new Solution();
+
     public static void main(String[] args) {
-        // write your code here
-        testSort();
+        int stairs = 100;
+        System.out.println(solution.climbStairs(stairs));
     }
 
     private static void testSort() {
