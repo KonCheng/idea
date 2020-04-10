@@ -1,6 +1,8 @@
 package com.koncheng.dispatch.web;
 
 import com.alibaba.fastjson.JSONObject;
+import com.koncheng.dispatch.entity.Context;
+import com.koncheng.dispatch.entity.User;
 import com.koncheng.dispatch.exception.AuthorizationException;
 import com.koncheng.dispatch.exception.DataValidateException;
 import com.koncheng.dispatch.exception.DispatchException;
@@ -21,6 +23,8 @@ public class DispatchController {
     }
 
     public String startProcess(HttpServletRequest request, JSONObject data) throws AuthorizationException, DispatchException, DataValidateException {
+        User currentUser = new User();
+        Context.setCurrentUser(currentUser);
         dispatchService.startProcess(data);
         return "Succeed";
     }

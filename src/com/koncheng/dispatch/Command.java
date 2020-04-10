@@ -1,5 +1,6 @@
 package com.koncheng.dispatch;
 
+import com.koncheng.dispatch.entity.Context;
 import com.koncheng.dispatch.exception.AuthorizationException;
 import com.koncheng.dispatch.exception.DataValidateException;
 import com.koncheng.dispatch.exception.DispatchException;
@@ -26,6 +27,7 @@ public interface Command<T> {
      * 命令实现
      *
      * @return
+     * @param context
      */
-    T execute() throws DispatchException;
+    T execute(Context context) throws DispatchException;
 }

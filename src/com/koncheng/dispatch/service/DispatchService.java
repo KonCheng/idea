@@ -5,6 +5,8 @@ import com.koncheng.dispatch.Command;
 import com.koncheng.dispatch.CommandExecutor;
 import com.koncheng.dispatch.ICommandExecutor;
 import com.koncheng.dispatch.command.StartTaskCmd;
+import com.koncheng.dispatch.entity.Context;
+import com.koncheng.dispatch.entity.User;
 import com.koncheng.dispatch.exception.AuthorizationException;
 import com.koncheng.dispatch.exception.DataValidateException;
 import com.koncheng.dispatch.exception.DispatchException;
@@ -30,13 +32,14 @@ public class DispatchService {
             }
 
             @Override
-            public String execute() throws DispatchException {
+            public String execute(Context context) throws DispatchException {
                 throw new DispatchException();
             }
-        });
+        }, new Context());
     }
 
     public String startProcess(JSONObject data) throws DispatchException, AuthorizationException, DataValidateException {
-        return commandExecutor.execute(new StartTaskCmd());
+        Context context = new Context();
+        return commandExecutor.execute(new StartTaskCmd(), context);
     }
 }

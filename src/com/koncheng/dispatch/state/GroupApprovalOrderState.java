@@ -80,8 +80,12 @@ public class GroupApprovalOrderState extends GroupTaskOrderState {
     }
 
     @Override
-    public void proceedWithCondition(Context context) {
+    public void proceedWithCondition(String flowCondition, Context context) {
+        switch (flowCondition){
+            case "":
+                this.approvalPass(context);
 
+        }
     }
 
     /**

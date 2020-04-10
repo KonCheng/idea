@@ -1,7 +1,9 @@
 package com.koncheng.dispatch.order;
 
 import com.koncheng.dispatch.entity.Context;
-import com.koncheng.dispatch.state.GroupTaskOrderState;
+import com.koncheng.dispatch.entity.DispatchExecutor;
+import com.koncheng.dispatch.entity.DispatchTargetClient;
+import com.koncheng.dispatch.entity.DispatchTask;
 import com.koncheng.dispatch.state.OrderState;
 
 /**
@@ -42,6 +44,19 @@ public abstract class Order {
      * 新建工单
      */
     public void start() {
+
+    }
+
+    public void start(DispatchTask task) {
+
+    }
+
+    public void start(DispatchExecutor executor) {
+
+    }
+
+    public void start(DispatchTargetClient client) {
+
     }
 
     /**
@@ -57,6 +72,6 @@ public abstract class Order {
      * @param context
      */
     public void proceedWithCondition(String flowCondition, Context context) {
-     this.currentState.proceedWithCondition(context);
+        this.currentState.proceedWithCondition(flowCondition, context);
     }
 }

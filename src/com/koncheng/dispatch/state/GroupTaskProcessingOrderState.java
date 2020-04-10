@@ -75,7 +75,7 @@ public class GroupTaskProcessingOrderState extends GroupTaskOrderState {
     }
 
     @Override
-    public void proceedWithCondition(Context context) {
+    public void proceedWithCondition(String flowCondition, Context context) {
 
     }
 

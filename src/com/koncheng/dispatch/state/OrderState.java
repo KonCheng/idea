@@ -25,7 +25,7 @@ public abstract class OrderState<T extends Order> {
      */
     public abstract String getName();
 
-    public abstract void proceedWithCondition(Context context);
+    public abstract void proceedWithCondition(String flowCondition, Context context);
 
     /**
      * 保存当前工单状态
