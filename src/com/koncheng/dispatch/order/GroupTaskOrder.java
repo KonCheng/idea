@@ -1,29 +1,27 @@
 package com.koncheng.dispatch.order;
 
-import com.koncheng.dispatch.entity.Context;
+import com.koncheng.dispatch.state.GroupTaskOrderState;
 
 /**
- * 集团营销任务工单
+ * 总部营销任务工单
+ *
+ * @author unicom
  */
-public interface GroupTaskOrder extends Order {
+public class GroupTaskOrder extends Order {
+
+    private static final String TYPE = OrderType.GroupTask.name();
+
+    public GroupTaskOrder(GroupTaskOrderState currentState) {
+        super(currentState);
+    }
 
     /**
-     * 工单评审通过
+     * 获取工单类型
+     *
+     * @return
      */
-    void approvalPass(Context context);
-
-    /**
-     * 工单评审驳回
-     */
-    void approvalReject(Context context);
-
-    /**
-     * 工单重新提交
-     */
-    void resubmit(Context context);
-
-    /**
-     * 工单执行
-     */
-    void execute(Context context);
+    @Override
+    public String getType() {
+        return TYPE;
+    }
 }

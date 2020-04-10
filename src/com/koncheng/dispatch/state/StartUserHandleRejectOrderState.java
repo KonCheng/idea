@@ -74,7 +74,7 @@ public class StartUserHandleRejectOrderState extends GroupTaskOrderState {
     }
 
     @Override
-    public void proceedWithCondition() {
+    public void proceedWithCondition(Context context) {
 
     }
 

@@ -5,6 +5,7 @@ import com.koncheng.dispatch.order.GroupTaskOrder;
 
 /**
  * 总部营销任务评审状态
+ * @author unicom
  */
 public class GroupApprovalOrderState extends GroupTaskOrderState {
 
@@ -79,7 +80,7 @@ public class GroupApprovalOrderState extends GroupTaskOrderState {
     }
 
     @Override
-    public void proceedWithCondition() {
+    public void proceedWithCondition(Context context) {
 
     }
 

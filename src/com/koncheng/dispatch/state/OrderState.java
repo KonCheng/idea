@@ -1,5 +1,6 @@
 package com.koncheng.dispatch.state;
 
+import com.koncheng.dispatch.entity.Context;
 import com.koncheng.dispatch.order.Order;
 
 public abstract class OrderState<T extends Order> {
@@ -24,7 +25,7 @@ public abstract class OrderState<T extends Order> {
      */
     public abstract String getName();
 
-    public abstract void proceedWithCondition();
+    public abstract void proceedWithCondition(Context context);
 
     /**
      * 保存当前工单状态
