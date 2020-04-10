@@ -74,4 +74,7 @@ public abstract class Order {
     public void proceedWithCondition(String flowCondition, Context context) {
         this.currentState.proceedWithCondition(flowCondition, context);
     }
+
+    public abstract OrderState initialState();
+
 }

@@ -42,6 +42,7 @@ public class StartTaskCmd extends Observable implements Command<String> {
 
     @Override
     public String execute(Context context) throws DispatchException {
+
         // 新建营销任务
         // 保存营销任务数据
         // 保存执行单位

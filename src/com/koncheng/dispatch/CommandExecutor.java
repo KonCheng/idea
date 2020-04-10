@@ -26,7 +26,7 @@ public class CommandExecutor implements ICommandExecutor {
      * @throws DispatchException      派单流程业务异常
      */
     @Override
-    public <T> T execute(Command<T> command, Context context) throws AuthorizationException, DispatchException, DataValidateException {
+    public final <T> T execute(Command<T> command, Context context) throws AuthorizationException, DispatchException, DataValidateException {
         command.validate();
         command.checkAccess();
         return command.execute(context);
