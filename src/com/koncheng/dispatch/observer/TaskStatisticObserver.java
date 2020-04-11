@@ -11,9 +11,19 @@ import java.util.Observer;
  */
 public class TaskStatisticObserver implements Observer {
 
+    private static long taskCount = 0;
 
     @Override
     public void update(Observable o, Object arg) {
+        count();
+    }
 
+    public static long getTaskNumber() {
+        return taskCount;
+    }
+
+    private static synchronized void count() {
+        taskCount++;
+        System.out.printf("营销任务总数加1，当前共%d条。\n", taskCount);
     }
 }

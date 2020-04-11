@@ -16,18 +16,18 @@ public interface Command<T> {
     /**
      * 字段验证
      */
-    void validate() throws DataValidateException;
+    void validate(Context context) throws DataValidateException;
 
     /**
      * 检查权限
      */
-    void checkAccess() throws AuthorizationException;
+    void checkAccess(Context context) throws AuthorizationException;
 
     /**
      * 命令实现
      *
-     * @return
      * @param context
+     * @return
      */
     T execute(Context context) throws DispatchException;
 }

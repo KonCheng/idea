@@ -8,24 +8,32 @@ import com.koncheng.dispatch.exception.DataValidateException;
 import com.koncheng.dispatch.exception.DispatchException;
 import com.koncheng.dispatch.service.DispatchService;
 
-import javax.servlet.http.HttpServletRequest;
-
 /**
  * @author KonCheng
  */
 public class DispatchController {
 
-    private DispatchService dispatchService = new DispatchService();
+    private static DispatchService dispatchService = new DispatchService();
 
     public String proceed(Long taskId) throws DispatchException, AuthorizationException, DataValidateException {
         dispatchService.proceed(taskId);
         return "Succeed";
     }
 
-    public String startProcess(HttpServletRequest request, JSONObject data) throws AuthorizationException, DispatchException, DataValidateException {
-        User currentUser = new User();
+    public static String startProcess(JSONObject data) throws AuthorizationException, DispatchException, DataValidateException {
+        System.out.println("收到发起营销任务请求，开始处理...");
+        User currentUser = new User(1, 2);
         Context.setCurrentUser(currentUser);
+        System.out.println("获取当前登录用户信息，用户id为：" + currentUser.id);
         dispatchService.startProcess(data);
+        System.out.println("请求处理完成");
         return "Succeed";
+    }
+
+    public static void main(String[] args) throws AuthorizationException, DispatchException, DataValidateException {
+        JSONObject data = new JSONObject();
+        data.put("name", "集团营销任务工单");
+        data.put("type", "1");
+        startProcess(data);
     }
 }

@@ -6,7 +6,7 @@ import com.koncheng.dispatch.CommandExecutor;
 import com.koncheng.dispatch.ICommandExecutor;
 import com.koncheng.dispatch.command.StartTaskCmd;
 import com.koncheng.dispatch.entity.Context;
-import com.koncheng.dispatch.entity.User;
+import com.koncheng.dispatch.entity.ContextBuilder;
 import com.koncheng.dispatch.exception.AuthorizationException;
 import com.koncheng.dispatch.exception.DataValidateException;
 import com.koncheng.dispatch.exception.DispatchException;
@@ -22,12 +22,12 @@ public class DispatchService {
 
         String result = commandExecutor.execute(new Command<>() {
             @Override
-            public void validate() {
+            public void validate(Context context) {
 
             }
 
             @Override
-            public void checkAccess() throws AuthorizationException {
+            public void checkAccess(Context context) throws AuthorizationException {
                 throw new AuthorizationException();
             }
 
@@ -35,11 +35,14 @@ public class DispatchService {
             public String execute(Context context) throws DispatchException {
                 throw new DispatchException();
             }
-        }, new Context());
+        }, new ContextBuilder().build());
     }
 
     public String startProcess(JSONObject data) throws DispatchException, AuthorizationException, DataValidateException {
-        Context context = new Context();
-        return commandExecutor.execute(new StartTaskCmd(), context);
+        System.out.println("开始构建Context对象");
+        ContextBuilder builder = new ContextBuilder();
+        builder.dataMap(data);
+        System.out.println("开始处理创建营销任务命令");
+        return commandExecutor.execute(new StartTaskCmd(), builder.build());
     }
 }

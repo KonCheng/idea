@@ -1,9 +1,8 @@
 package com.koncheng.dispatch.order;
 
-import com.koncheng.dispatch.entity.Context;
-import com.koncheng.dispatch.entity.DispatchExecutor;
-import com.koncheng.dispatch.entity.DispatchTargetClient;
-import com.koncheng.dispatch.entity.DispatchTask;
+import com.koncheng.dispatch.entity.*;
+import com.koncheng.dispatch.manager.DispatchOrderManager;
+import com.koncheng.dispatch.state.GroupApprovalOrderState;
 import com.koncheng.dispatch.state.OrderState;
 
 /**
@@ -47,16 +46,23 @@ public abstract class Order {
 
     }
 
-    public void start(DispatchTask task) {
+    public static Order start(DispatchTask task) {
+        System.out.println("开始生成营销任务工单");
+        DispatchOrderManager orderManager = new DispatchOrderManager();
 
+
+        DispatchOrder order = orderManager.newGroupTaskOrder(task.id);
+
+        System.out.println("工单创建成功");
+        return OrderFactory.toOrder(order);
     }
 
-    public void start(DispatchExecutor executor) {
-
+    public static Order start(DispatchExecutor executor) {
+        return null;
     }
 
-    public void start(DispatchTargetClient client) {
-
+    public static Order start(DispatchTargetClient client) {
+        return null;
     }
 
     /**
@@ -75,6 +81,6 @@ public abstract class Order {
         this.currentState.proceedWithCondition(flowCondition, context);
     }
 
-    public abstract OrderState initialState();
+    public abstract GroupApprovalOrderState initialState();
 
 }

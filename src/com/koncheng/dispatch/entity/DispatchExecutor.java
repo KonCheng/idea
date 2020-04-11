@@ -10,4 +10,8 @@ public class DispatchExecutor {
     public long parentOrderId;
     public int type;
     public long orderId;
+
+    public static final int EXECUTOR_DEPT_TYPE = 0;
+    public static final int EXECUTOR_USER_TYPE = 1;
+
 }

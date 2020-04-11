@@ -1,12 +1,16 @@
 package com.koncheng.dispatch.entity;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author ChenYong
  */
 public class Context {
     private static final ThreadLocal<User> currentUserThreadLocal = new ThreadLocal<>();
+
+    Context() {
+    }
 
     private DispatchTask dispatchTask;
 
@@ -25,6 +29,8 @@ public class Context {
     private DispatchLinkRequirement requirement;
 
     private List<DispatchLinkRequirement> requirements;
+
+    private Map<String, Object> data;
 
     public static User getCurrentUser() {
         return currentUserThreadLocal.get();
@@ -104,5 +110,13 @@ public class Context {
 
     public void setRequirements(List<DispatchLinkRequirement> requirements) {
         this.requirements = requirements;
+    }
+
+    public Map<String, Object> getData() {
+        return data;
+    }
+
+    public void setData(Map<String, Object> data) {
+        this.data = data;
     }
 }

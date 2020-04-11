@@ -1,6 +1,14 @@
 package com.koncheng.dispatch.order;
 
-public interface OrderFactory {
+import com.koncheng.dispatch.entity.DispatchOrder;
+import com.koncheng.dispatch.state.GroupApprovalOrderState;
 
-    Order getOrder(Long taskId);
+public class OrderFactory {
+
+    public static Order toOrder(DispatchOrder order) {
+
+        GroupTaskOrder groupTaskOrder = null;
+        groupTaskOrder = new GroupTaskOrder(new GroupApprovalOrderState(null));
+        return groupTaskOrder;
+    }
 }

@@ -27,8 +27,8 @@ public class CommandExecutor implements ICommandExecutor {
      */
     @Override
     public final <T> T execute(Command<T> command, Context context) throws AuthorizationException, DispatchException, DataValidateException {
-        command.validate();
-        command.checkAccess();
+        command.validate(context);
+        command.checkAccess(context);
         return command.execute(context);
     }
 }
