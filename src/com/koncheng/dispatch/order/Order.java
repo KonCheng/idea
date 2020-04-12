@@ -83,4 +83,7 @@ public abstract class Order {
 
     public abstract GroupApprovalOrderState initialState();
 
+    public void generateUserTask() {
+        this.currentState.generateUserTask();
+    }
 }

@@ -30,6 +30,10 @@ public class DispatchController {
         return "Succeed";
     }
 
+    public static String groupApproval() {
+        return "Succeed";
+    }
+
     public static void main(String[] args) throws AuthorizationException, DispatchException, DataValidateException {
         JSONObject data = new JSONObject();
         data.put("name", "集团营销任务工单");

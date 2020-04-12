@@ -31,4 +31,6 @@ public abstract class OrderState<T extends Order> {
      * 保存当前工单状态
      */
     public abstract void persist();
+
+    public abstract void generateUserTask();
 }

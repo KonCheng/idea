@@ -5,6 +5,7 @@ import com.koncheng.dispatch.order.GroupTaskOrder;
 
 /**
  * 总部营销任务评审状态
+ *
  * @author unicom
  */
 public class GroupApprovalOrderState extends GroupTaskOrderState {
@@ -81,7 +82,7 @@ public class GroupApprovalOrderState extends GroupTaskOrderState {
 
     @Override
     public void proceedWithCondition(String flowCondition, Context context) {
-        switch (flowCondition){
+        switch (flowCondition) {
             case "":
                 this.approvalPass(context);
 
@@ -94,5 +95,10 @@ public class GroupApprovalOrderState extends GroupTaskOrderState {
     @Override
     public void persist() {
         System.out.println("当前状态保存至数据库");
+    }
+
+    @Override
+    public void generateUserTask() {
+        System.out.println("生成待办");
     }
 }
