@@ -17,6 +17,7 @@ public class DispatchOrderManager {
     }
 
     public DispatchOrder findById(Long id) {
+        System.out.println("通过id获取工单对象");
         DispatchOrder order = new DispatchOrder();
         order.id = id;
         return order;

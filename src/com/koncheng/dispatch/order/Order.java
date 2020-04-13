@@ -12,8 +12,21 @@ public abstract class Order {
 
     private OrderState currentState;
 
+    private DispatchOrder orderObject;
+
+    public Order() {
+    }
+
     public Order(OrderState currentState) {
         this.currentState = currentState;
+    }
+
+    public DispatchOrder getOrderObject() {
+        return orderObject;
+    }
+
+    public void setOrderObject(DispatchOrder orderObject) {
+        this.orderObject = orderObject;
     }
 
     /**
@@ -54,7 +67,9 @@ public abstract class Order {
         DispatchOrder order = orderManager.newGroupTaskOrder(task.id);
 
         System.out.println("工单创建成功");
-        return OrderFactory.toOrder(order);
+        Order toOrder = OrderFactory.toOrder(order);
+        toOrder.currentState.generateUserTask();
+        return toOrder;
     }
 
     public static Order start(DispatchExecutor executor) {
@@ -78,7 +93,7 @@ public abstract class Order {
      * @param context
      */
     public void proceedWithCondition(String flowCondition, Context context) {
-        this.currentState.proceedWithCondition(flowCondition, context);
+        this.currentState.proceed(flowCondition, context);
     }
 
     public abstract GroupApprovalOrderState initialState();

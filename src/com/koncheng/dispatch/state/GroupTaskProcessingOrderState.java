@@ -18,8 +18,9 @@ public class GroupTaskProcessingOrderState extends GroupTaskOrderState {
      * @param context
      */
     @Override
-    public void approvalPass(Context context) {
+    public OrderState approvalPass(Context context) {
         System.out.println("工单状态异常");
+        return null;
     }
 
     /**
@@ -28,8 +29,9 @@ public class GroupTaskProcessingOrderState extends GroupTaskOrderState {
      * @param context
      */
     @Override
-    public void approvalReject(Context context) {
+    public OrderState approvalReject(Context context) {
         System.out.println("工单状态异常");
+        return null;
     }
 
     /**
@@ -38,20 +40,22 @@ public class GroupTaskProcessingOrderState extends GroupTaskOrderState {
      * @param context
      */
     @Override
-    public void resubmit(Context context) {
+    public OrderState resubmit(Context context) {
         System.out.println("工单状态异常");
+        return null;
     }
 
     /**
-     * 工单执行
+     * 工单执行，拆单
      *
      * @param context
      */
     @Override
-    public void execute(Context context) {
+    public OrderState execute(Context context) {
         System.out.println("工单处理中");
         System.out.println("产生新的子工单");
         System.out.println("保存新的子工单");
+        return null;
     }
 
     /**
@@ -75,8 +79,8 @@ public class GroupTaskProcessingOrderState extends GroupTaskOrderState {
     }
 
     @Override
-    public void proceedWithCondition(String flowCondition, Context context) {
-
+    public OrderState proceedWithCondition(String flowCondition, Context context) {
+        return null;
     }
 
     /**
@@ -85,5 +89,11 @@ public class GroupTaskProcessingOrderState extends GroupTaskOrderState {
     @Override
     public void persist() {
         System.out.println("当前状态保存至数据库");
+    }
+
+    @Override
+    public void generateUserTask() {
+        execute(null);
+        System.out.println("生成用户任务");
     }
 }

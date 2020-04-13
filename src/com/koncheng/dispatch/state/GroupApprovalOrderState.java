@@ -23,9 +23,12 @@ public class GroupApprovalOrderState extends GroupTaskOrderState {
      * @param context
      */
     @Override
-    public void approvalPass(Context context) {
+    public OrderState approvalPass(Context context) {
         System.out.println("总部营销任务评审通过");
-        super.order.setState(new GroupTaskProcessingOrderState(super.order));
+        OrderState<GroupTaskOrder> orderState = new GroupTaskProcessingOrderState(super.order);
+//        ((GroupTaskProcessingOrderState) orderState).execute();
+        super.order.setState(orderState);
+        return orderState;
     }
 
     /**
@@ -34,9 +37,11 @@ public class GroupApprovalOrderState extends GroupTaskOrderState {
      * @param context
      */
     @Override
-    public void approvalReject(Context context) {
+    public OrderState approvalReject(Context context) {
         System.out.println("总部营销任务评审被驳回");
-        super.order.setState(new StartUserHandleRejectOrderState(super.order));
+        StartUserHandleRejectOrderState orderState = new StartUserHandleRejectOrderState(super.order);
+        super.order.setState(orderState);
+        return orderState;
     }
 
     /**
@@ -45,8 +50,9 @@ public class GroupApprovalOrderState extends GroupTaskOrderState {
      * @param context
      */
     @Override
-    public void resubmit(Context context) {
+    public OrderState resubmit(Context context) {
         System.out.println("工单状态异常");
+        return null;
     }
 
 
@@ -56,8 +62,9 @@ public class GroupApprovalOrderState extends GroupTaskOrderState {
      * @param context
      */
     @Override
-    public void execute(Context context) {
+    public OrderState execute(Context context) {
         System.out.println("工单状态异常");
+        return null;
     }
 
     /**
@@ -81,12 +88,14 @@ public class GroupApprovalOrderState extends GroupTaskOrderState {
     }
 
     @Override
-    public void proceedWithCondition(String flowCondition, Context context) {
+    public OrderState proceedWithCondition(String flowCondition, Context context) {
         switch (flowCondition) {
-            case "":
-                this.approvalPass(context);
-
+            case "pass":
+                return this.approvalPass(context);
+            case "reject":
+                return this.approvalReject(context);
         }
+        return null;
     }
 
     /**

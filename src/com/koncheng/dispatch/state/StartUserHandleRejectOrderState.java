@@ -18,8 +18,9 @@ public class StartUserHandleRejectOrderState extends GroupTaskOrderState {
      * @param context
      */
     @Override
-    public void approvalPass(Context context) {
+    public OrderState approvalPass(Context context) {
         System.out.println("工单状态异常");
+        return null;
     }
 
     /**
@@ -28,8 +29,9 @@ public class StartUserHandleRejectOrderState extends GroupTaskOrderState {
      * @param context
      */
     @Override
-    public void approvalReject(Context context) {
+    public OrderState approvalReject(Context context) {
         System.out.println("工单状态异常");
+        return null;
     }
 
     /**
@@ -38,9 +40,10 @@ public class StartUserHandleRejectOrderState extends GroupTaskOrderState {
      * @param context
      */
     @Override
-    public void resubmit(Context context) {
+    public OrderState resubmit(Context context) {
         System.out.println("修改后重新提交工单");
         super.order.setState(new GroupApprovalOrderState(super.order));
+        return null;
     }
 
     /**
@@ -49,8 +52,9 @@ public class StartUserHandleRejectOrderState extends GroupTaskOrderState {
      * @param context
      */
     @Override
-    public void execute(Context context) {
+    public OrderState execute(Context context) {
         System.out.println("工单状态异常");
+        return null;
     }
 
     /**
@@ -74,8 +78,8 @@ public class StartUserHandleRejectOrderState extends GroupTaskOrderState {
     }
 
     @Override
-    public void proceedWithCondition(String flowCondition, Context context) {
-
+    public OrderState proceedWithCondition(String flowCondition, Context context) {
+        return null;
     }
 
     /**
@@ -84,5 +88,10 @@ public class StartUserHandleRejectOrderState extends GroupTaskOrderState {
     @Override
     public void persist() {
         System.out.println("保存状态至数据库");
+    }
+
+    @Override
+    public void generateUserTask() {
+        System.out.println("生成用户任务");
     }
 }

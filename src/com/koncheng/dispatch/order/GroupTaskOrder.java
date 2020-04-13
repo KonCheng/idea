@@ -2,7 +2,6 @@ package com.koncheng.dispatch.order;
 
 import com.koncheng.dispatch.state.GroupApprovalOrderState;
 import com.koncheng.dispatch.state.GroupTaskOrderState;
-import com.koncheng.dispatch.state.OrderState;
 
 /**
  * 总部营销任务工单
@@ -12,6 +11,9 @@ import com.koncheng.dispatch.state.OrderState;
 public class GroupTaskOrder extends Order {
 
     private static final String TYPE = OrderType.GroupTask.name();
+
+    public GroupTaskOrder() {
+    }
 
     public GroupTaskOrder(GroupTaskOrderState currentState) {
         super(currentState);
