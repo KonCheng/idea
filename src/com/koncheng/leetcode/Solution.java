@@ -1,9 +1,7 @@
 package com.koncheng.leetcode;
 
 import java.math.BigInteger;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Stack;
+import java.util.*;
 
 public class Solution {
     public int maxSubArray(int[] nums) {
@@ -201,5 +199,55 @@ public class Solution {
             carry = carry * 10;
         }
         System.out.println(y);
+    }
+
+    /**
+     * 寻找两个有序数组的交集
+     *
+     * @param array1
+     * @param array2
+     * @return
+     */
+    public int[] retainAll(int[] array1, int[] array2) {
+        List<Integer> list = new ArrayList<>();
+        int i = 0, j = 0;
+        while (i < array1.length && j < array2.length) {
+            if (array1[i] == array2[j]) {
+                list.add(array1[i]);
+                i++;
+                j++;
+            } else {
+                if (array1[i] > array2[j]) {
+                    j++;
+                } else {
+                    i++;
+                }
+            }
+        }
+        int[] result = list.stream().mapToInt(Integer::valueOf).toArray();
+        return result;
+    }
+
+    /**
+     * 寻找字符数组中唯一不同的字符
+     *
+     * @param char1
+     * @param char2
+     * @return
+     */
+    public char find(char[] char1, char[] char2) {
+        int i = 0;
+        while (i < char1.length && i < char2.length) {
+            if (char1[i] != char2[i]) {
+                return char1[i];
+            } else {
+                i++;
+            }
+        }
+        if (char1.length > char2.length) {
+            return char1[i];
+        } else {
+            return char2[i];
+        }
     }
 }
