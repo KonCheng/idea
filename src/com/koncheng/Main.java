@@ -1,19 +1,21 @@
 package com.koncheng;
 
 import com.koncheng.leetcode.Solution;
-import com.koncheng.sort.*;
+import com.koncheng.sort.QuickSort;
+import com.koncheng.sort.Sort;
 
-import java.util.Arrays;
+import java.io.IOException;
 import java.util.Random;
 
 public class Main {
 
     private static Solution solution = new Solution();
 
-    public static void main(String[] args) {
-        char[] array1 = {'a', 'b', 'c', 'd', 'e', 'f', 'g'};
-        char[] array2 = {'a', 'b', 'c', 'd', 'f', 'g'};
-        System.out.println(solution.find(array1, array2));
+    public static void main(String[] args) throws NoSuchMethodException, IOException {
+        String s = "ab#c";
+        String t = "ad#c";
+
+        System.out.println(solution.backspaceCompare(s, t));
     }
 
     private static void testSort() {
